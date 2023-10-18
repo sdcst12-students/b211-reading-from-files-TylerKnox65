@@ -13,3 +13,21 @@ Apple Inc.
 Enter stock symbol: YANG
 No matches
 """
+import csv
+def main(stock = None):
+    with open('task5.csv', newline='') as csvfile:
+        readdata = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        for i in readdata:
+            data = ', '.join(i)
+            data = data.split(",")
+            try:
+                if data[data.index(stock)]:
+                    print("a")
+            except:
+                pass
+
+
+
+
+if __name__ == "__main__":
+    main(input("Enter the stock: "))
