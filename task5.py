@@ -15,17 +15,27 @@ No matches
 """
 import csv
 def main(stock = None):
+    numStock = 0
+    found = None
     with open('task5.csv', newline='') as csvfile:
         readdata = csv.reader(csvfile, delimiter=' ', quotechar='|')
         for i in readdata:
             data = ', '.join(i)
             data = data.split(",")
+            
             try:
-                if data[data.index(stock)]:
-                    print("a")
+                if  stock == data[0]:
+                    print(data)
+                    found = data
+                elif stock in data[0]:
+                    numStock += 1
             except:
                 pass
-
+        if found != None:
+            print(f"The company for the stock {stock} is {found[1]}")
+        elif numStock > 0:
+            print(f"There are {numStock} stocks with that name")
+            
 
 
 
